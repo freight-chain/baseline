@@ -1,6 +1,7 @@
+// SPDX-License-Identifier: CC0
 pragma solidity ^0.6.9;
 
-import "./ERC1820Registry.sol";
+import "../../../lib/contracts/ERC1820Registry.sol";
 
 /// @dev Contract that acts as a client for interacting with the ERC1820Registry
 contract Registrar {
@@ -17,7 +18,7 @@ contract Registrar {
         _;
     }
 
-    
+
     /// @notice Constructor that takes an argument of the ERC1820RegistryAddress
     /// @dev Upon actual deployment of a static registry contract, this argument can be removed
     /// @param ERC1820RegistryAddress pre-deployed ERC1820 registry address

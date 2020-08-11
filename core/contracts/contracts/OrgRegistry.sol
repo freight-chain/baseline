@@ -185,7 +185,7 @@ contract OrgRegistry is Ownable, ERC165Compatible, Registrar, IOrgRegistry {
             _shieldAddress,
             _verifierAddress
         );
-      
+
         orgInterfaceCount++;
         return true;
     }
@@ -242,4 +242,3 @@ contract OrgRegistry is Ownable, ERC165Compatible, Registrar, IOrgRegistry {
         );
     }
 }
-

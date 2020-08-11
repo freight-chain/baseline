@@ -18,7 +18,7 @@ contract Registrar {
         _;
     }
 
-    
+
     /// @notice Constructor that takes an argument of the ERC1820RegistryAddress
     /// @dev Upon actual deployment of a static registry contract, this argument can be removed
     /// @param ERC1820RegistryAddress pre-deployed ERC1820 registry address

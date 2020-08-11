@@ -2,7 +2,9 @@
 
 Baseline core messaging package.
 
-[NATS](https://nats.io) is currently the default example of a point-to-point messaging provider for organizations to exchange secure protocol messages. Other messaging protocols may be implemented.
+[NATS](https://nats.io) is currently the default example of a point-to-point
+messaging provider for organizations to exchange secure protocol messages. Other
+messaging protocols may be implemented.
 
 ## Installation
 
@@ -14,7 +16,7 @@ You can build the package locally with `npm run build`.
 
 ## Interfaces
 
-__IMessagingService__
+**IMessagingService**
 
 ```
 connect(): Promise<any>;

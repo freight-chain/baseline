@@ -1,6 +1,7 @@
-import mongoose from 'mongoose';
-import { getPartnerByMessengerKey } from '../../../services/partner';
-import { logger } from 'radish34-logger';
+import mongoose from "mongoose";
+import { logger } from "radish34-logger";
+
+import { getPartnerByMessagingKey } from "../../../services/partner";
 // import { pubsub } from '../subscriptions';
 
 /**
@@ -42,9 +43,9 @@ const NoticesSchema = new mongoose.Schema({
   },
 });
 
-const Notice = mongoose.model('notices', NoticesSchema);
+const Notice = mongoose.model("notices", NoticesSchema);
 
-export const getNoticeById = async id => {
+export const getNoticeById = async (id) => {
   const notice = await Notice.findOne({ _id: id });
   return notice;
 };
@@ -54,23 +55,23 @@ export const getAllNotices = async () => {
   return notices;
 };
 
-export const getNoticesByCategory = async category => {
+export const getNoticesByCategory = async (category) => {
   const notices = await Notice.find({ category }).toArray();
   return notices;
 };
 
 export const getInbox = async () => {
-  const notices = await Notice.find({ status: 'incoming' }).toArray();
+  const notices = await Notice.find({ status: "incoming" }).toArray();
   return notices;
 };
 
 export const getOutbox = async () => {
-  const notices = await Notice.find({ status: 'outgoing' }).toArray();
+  const notices = await Notice.find({ status: "outgoing" }).toArray();
   return notices;
 };
 
-export const saveNotice = async input => {
-  logger.info('Saving the notice.', { service: 'API' });
+export const saveNotice = async (input) => {
+  logger.info("Saving the notice.", { service: "API" });
   const count = await Notice.estimatedDocumentCount();
   const doc = Object.assign(input, { _id: count + 1 });
   const notice = await Notice.insertOne(doc);
@@ -78,9 +79,12 @@ export const saveNotice = async input => {
 };
 
 /**
- * Creates a new incoming notice for a partner based on data sent from a different partner
- * @param {String} category - the category this notice should fall under (RFP/MSA/Proposal...)
- * @param {Object} payload - the payload/object sent through whisper that was stored in partner db
+ * Creates a new incoming notice for a partner based on data sent from a
+ * different partner
+ * @param {String} category - the category this notice should fall under
+ *     (RFP/MSA/Proposal...)
+ * @param {Object} payload - the payload/object sent through whisper that was
+ *     stored in partner db
  */
 export const createNotice = async (category, payload, categoryId = null) => {
   try {
@@ -91,15 +95,18 @@ export const createNotice = async (category, payload, categoryId = null) => {
       category,
       subject: `New ${category}: ${payload._id}`,
       from: sender.name,
-      statusText: 'Awaiting Response',
+      statusText: "Awaiting Response",
       lastModified: Math.floor(Date.now() / 1000),
-      status: 'incoming',
+      status: "incoming",
     };
-    const notice = await Notice.create([newNotice], { upsert: true, new: true });
+    const notice = await Notice.create([newNotice], {
+      upsert: true,
+      new: true,
+    });
     // pubsub.publish('NEW_NOTICE', { newNotice: notice[0] });
     return notice;
   } catch (err) {
-    logger.error('Error creating notice.\n%o', err, { service: 'API' });
+    logger.error("Error creating notice.\n%o", err, { service: "API" });
   }
 };
 

@@ -12,20 +12,21 @@ You can build the package locally with `npm run build`.
 
 ## Baseline JSON-RPC Module
 
-An initial set of JSON-RPC methods have been defined for inclusion in the specification:
+An initial set of JSON-RPC methods have been defined for inclusion in the
+specification:
 
-| Method | Params | Description |
-| -------- | ----- | ----------- |
-| `baseline_deploy` | | Deploy a shield contract given the compiled artifact bytecode and ABI |
-| `baseline_getLeaf` | | Retrieve a single leaf from a tree at the given shield contract address |
-| `baseline_getLeaves` | | Retrieve multiple leaves from a tree at the given shield contract address |
-| `baseline_getRoot` | | Retrieve the root of a tree at the given shield contract address |
-| `baseline_getSiblings` | | Retrieve sibling paths/proof of the given leaf index |
-| `baseline_getTracked` | | Retrieve a list of the shield contract addresses being tracked and persisted |
-| `baseline_insertLeaf` | | Inserts a single leaf in a tree at the given shield contract address |
-| `baseline_insertLeaves` | | Inserts multiple leaves in a tree at the given shield contract address |
-| `baseline_track` | | Initialize a merkle tree database for the given shield contract address |
-| `baseline_verify` | | Verify a sibling path for a given root and leaf at the given shield contract address |
+| Method                  | Params | Description                                                                          |
+| ----------------------- | ------ | ------------------------------------------------------------------------------------ |
+| `baseline_deploy`       |        | Deploy a shield contract given the compiled artifact bytecode and ABI                |
+| `baseline_getLeaf`      |        | Retrieve a single leaf from a tree at the given shield contract address              |
+| `baseline_getLeaves`    |        | Retrieve multiple leaves from a tree at the given shield contract address            |
+| `baseline_getRoot`      |        | Retrieve the root of a tree at the given shield contract address                     |
+| `baseline_getSiblings`  |        | Retrieve sibling paths/proof of the given leaf index                                 |
+| `baseline_getTracked`   |        | Retrieve a list of the shield contract addresses being tracked and persisted         |
+| `baseline_insertLeaf`   |        | Inserts a single leaf in a tree at the given shield contract address                 |
+| `baseline_insertLeaves` |        | Inserts multiple leaves in a tree at the given shield contract address               |
+| `baseline_track`        |        | Initialize a merkle tree database for the given shield contract address              |
+| `baseline_verify`       |        | Verify a sibling path for a given root and leaf at the given shield contract address |
 
 ### Ethereum Clients
 
@@ -33,7 +34,7 @@ An initial set of JSON-RPC methods have been defined for inclusion in the specif
 
 ## Interfaces
 
-__IBaselineRPC__
+**IBaselineRPC**
 
 ```
 deploy(sender: string, bytecode: string, abi: any): Promise<any>;
@@ -48,7 +49,7 @@ track(address: string): Promise<boolean>;
 verify(address: string, root: string, leaf: string, siblingPath: MerkleTreeNode[]): Promise<boolean>;
 ```
 
-__IRegistry__
+**IRegistry**
 
 ```
 // workgroups
@@ -60,7 +61,6 @@ fetchWorkgroupOrganizations(workgroupId: string, params: object): Promise<any>;
 createWorkgroupOrganization(workgroupId: string, params: object): Promise<any>;
 updateWorkgroupOrganization(workgroupId: string, organizationId: string, params: object): Promise<any>;
 fetchWorkgroupInvitations(workgroupId: string, params: object): Promise<any>;
-fetchWorkgroupTokens(workgroupId: string): Promise<any>;
 fetchWorkgroupUsers(workgroupId: string, params: object): Promise<any>;
 createWorkgroupUser(workgroupId: string, params: object): Promise<any>;
 updateWorkgroupUser(workgroupId: string, userId: string, params: object): Promise<any>;
@@ -78,7 +78,7 @@ fetchOrganizationUsers(organizationId: string, params: object): Promise<any>;
 inviteOrganizationUser(organizationId: string, params: object): Promise<any>;
 ```
 
-__IVault__
+**IVault**
 
 ```
 createVault(params: object): Promise<any>;
@@ -99,6 +99,7 @@ deleteVaultSecret(vaultId: string, secretId: string): Promise<any>;
 
 The following providers of the Baseline API are available:
 
-- Ethers.js - *example provider; not yet implemented*
-- [Provide](https://provide.services) - enterprise-grade reference implementation (see `examples/baseline-app`)
+- Ethers.js - _example provider; not yet implemented_
+- [Provide](https://provide.services) - enterprise-grade reference
+  implementation (see `examples/baseline-app`)
 - RPC - generic JSON-RPC provider

@@ -1,17 +1,18 @@
-import { getRFPById, getAllRFPs } from '../../services/rfp';
-import { saveNotice } from '../../services/notice';
-import { pubsub } from '../subscriptions';
-import msgDeliveryQueue from '../queues/message_delivery';
-import { saveRFP } from '../db/models/modules/rfps';
-import { getPartnerByMessengerKey } from '../services/partner';
-import { logger } from 'radish34-logger';
+import { logger } from "radish34-logger";
 
-const NEW_RFP = 'NEW_RFP';
+import { saveRFP } from "../../db/models/modules/rfps";
+import msgDeliveryQueue from "../../queues/message_delivery";
+import { saveNotice } from "../../services/notice";
+import { getPartnerByMessagingKey } from "../../services/partner";
+import { getAllRFPs, getRFPById } from "../../services/rfp";
+import { pubsub } from "../subscriptions";
+
+const NEW_RFP = "NEW_RFP";
 
 export default {
   Query: {
     rfp(_parent, args) {
-      return getRFPById(args.uuid).then(res => res);
+      return getRFPById(args.uuid).then((res) => res);
     },
     rfps() {
       return getAllRFPs();
@@ -29,20 +30,22 @@ export default {
       const rfp = (await saveRFP(myRFP))._doc;
       await saveNotice({
         resolved: false,
-        category: 'rfp',
+        category: "rfp",
         subject: `New RFP: ${rfp.description}`,
-        from: currentUser ? currentUser.name : 'Buyer',
-        statusText: 'Pending',
-        status: 'outgoing',
+        from: currentUser ? currentUser.name : "Buyer",
+        statusText: "Pending",
+        status: "outgoing",
         categoryId: rfp._id,
         lastModified: currentTime,
       });
       pubsub.publish(NEW_RFP, { newRFP: rfp });
-      logger.info(`Sending RFP wit uuid ${rfp._id} to recipients.`, { service: 'API' });
+      logger.info(`Sending RFP wit uuid ${rfp._id} to recipients.`, {
+        service: "API",
+      });
       const { recipients, ...rfpDetails } = rfp;
-      rfpDetails.type = 'rfp_create';
+      rfpDetails.type = "rfp_create";
       rfpDetails.uuid = rfp._id;
-      recipients.forEach(recipient => {
+      recipients.forEach((recipient) => {
         // For data structure parity between buyer/supplier systems
         // put the recipient back as the only entry in the array
         const rfpToSend = { ...rfpDetails, recipients: [recipient] };
@@ -55,9 +58,10 @@ export default {
             payload: rfpToSend,
           },
           {
-            // Mark job as failed after 20sec so subsequent jobs are not stalled
+            // Mark job as failed after 20sec so subsequent jobs are not
+            // stalled
             timeout: 20000,
-          },
+          }
         );
       });
       return { ...rfp };

@@ -1,21 +1,32 @@
 /* eslint no-param-reassign: ["error", { "props": false }] */
 
-import { MSA, getMSAById, getAllMSAs, getMSAsBySKU, saveMSA, getMSAsByRFPId } from '../../services/msa';
-import { getPartnerByAddress, getPartnerByzkpPublicKey, getPartnerByMessagingKey } from '../../services/partner';
-import { saveNotice } from '../../services/notice';
-import { getServerSettings } from '../../utils/serverSettings';
-import { pubsub } from '../subscriptions';
-import msgDeliveryQueue from '../../queues/message_delivery';
-import { strip0x } from '../../utils/crypto/conversions';
-import { checkKeyPair } from '../../utils/crypto/ecc/babyjubjub-ecc';
+import msgDeliveryQueue from "../../queues/message_delivery";
+import {
+  getAllMSAs,
+  getMSAById,
+  getMSAsByRFPId,
+  getMSAsBySKU,
+  MSA,
+  saveMSA,
+} from "../../services/msa";
+import { saveNotice } from "../../services/notice";
+import {
+  getPartnerByAddress,
+  getPartnerByMessagingKey,
+  getPartnerByzkpPublicKey,
+} from "../../services/partner";
+import { strip0x } from "../../utils/crypto/conversions";
+import { checkKeyPair } from "../../utils/crypto/ecc/babyjubjub-ecc";
+import { getServerSettings } from "../../utils/serverSettings";
+import { pubsub } from "../subscriptions";
 
-const pycryptojs = require('zokrates-pycryptojs');
+const pycryptojs = require("zokrates-pycryptojs");
 
-import { logger } from 'radish34-logger';
+import { logger } from "radish34-logger";
 
-const NEW_MSA = 'NEW_MSA';
+const NEW_MSA = "NEW_MSA";
 
-const getSignatureStatus = msa => {
+const getSignatureStatus = (msa) => {
   const { R: RBuyer, S: SBuyer } = msa.constants.EdDSASignatures.buyer;
   const { R: RSupplier, S: SSupplier } = msa.constants.EdDSASignatures.supplier;
   let buyerSignatureStatus;
@@ -30,30 +41,42 @@ const getSignatureStatus = msa => {
   };
 };
 
-const mapMSAsWithSignatureStatus = async msas => {
-  const msasWithSignatureStatus = await Promise.all(msas.map(async msa => {
-    const { constants, ...msaData } = msa;
-    const { buyerSignatureStatus, supplierSignatureStatus } = getSignatureStatus(msa);
-    const supplier = await getPartnerByzkpPublicKey(constants.zkpPublicKeyOfSupplier);
-    return {
-      ...msaData,
-      ...constants,
-      whisperPublicKeySupplier: supplier.identity,
-      supplierDetails: supplier,
-      buyerSignatureStatus,
-      supplierSignatureStatus,
-    };
-  }));
-  return msasWithSignatureStatus
-}
+const mapMSAsWithSignatureStatus = async (msas) => {
+  const msasWithSignatureStatus = await Promise.all(
+    msas.map(async (msa) => {
+      const { constants, ...msaData } = msa;
+      const {
+        buyerSignatureStatus,
+        supplierSignatureStatus,
+      } = getSignatureStatus(msa);
+      const supplier = await getPartnerByzkpPublicKey(
+        constants.zkpPublicKeyOfSupplier
+      );
+      return {
+        ...msaData,
+        ...constants,
+        whisperPublicKeySupplier: supplier.identity,
+        supplierDetails: supplier,
+        buyerSignatureStatus,
+        supplierSignatureStatus,
+      };
+    })
+  );
+  return msasWithSignatureStatus;
+};
 
 export default {
   Query: {
     msa: async (_parent, args) => {
-      const msa = await getMSAById(args.id).then(res => res);
+      const msa = await getMSAById(args.id).then((res) => res);
       const { constants, ...msaData } = msa;
-      const { buyerSignatureStatus, supplierSignatureStatus } = getSignatureStatus(msa);
-      const supplier = await getPartnerByzkpPublicKey(constants.zkpPublicKeyOfSupplier);
+      const {
+        buyerSignatureStatus,
+        supplierSignatureStatus,
+      } = getSignatureStatus(msa);
+      const supplier = await getPartnerByzkpPublicKey(
+        constants.zkpPublicKeyOfSupplier
+      );
 
       return {
         ...msaData,
@@ -76,11 +99,13 @@ export default {
     msasByRFPId: async (_parent, args) => {
       const msas = await getMSAsByRFPId(args.rfpId);
       return mapMSAsWithSignatureStatus(msas);
-    }
+    },
   },
   Mutation: {
     createMSA: async (_parent, args, context) => {
-      logger.info(`Request to create MSA with inputs:\n%o`, args.input, { service: 'API' });
+      logger.info(`Request to create MSA with inputs:\n%o`, args.input, {
+        service: "API",
+      });
       const _supplier = await getPartnerByAddress(args.input.supplierAddress);
       delete _supplier._id;
       delete args.input.supplierAddress;
@@ -101,7 +126,7 @@ export default {
 
       const signature = await pycryptojs.sign(
         strip0x(zkpPrivateKey),
-        strip0x(msa.commitment.commitment.hex()),
+        strip0x(msa.commitment.commitment.hex())
       );
 
       msa.EdDSASignatures = {
@@ -122,28 +147,33 @@ export default {
 
       await saveNotice({
         resolved: false,
-        category: 'msa',
+        category: "msa",
         subject: `New MSA: for SKU ${msaObject.constants.sku}`,
         from: name,
-        statusText: 'Pending',
-        status: 'outgoing',
+        statusText: "Pending",
+        status: "outgoing",
         categoryId: msaDoc._id,
         lastModified: Math.floor(Date.now() / 1000),
       });
 
-      logger.info(`Sending MSA with id ${msaDoc._id} to supplier for signing.`, { service: 'API' });
-      msgDeliveryQueue.add({
-        documentId: msaDoc._id,
-        senderId: context.identity,
-        recipientId: _supplier.identity,
-        payload: {
-          type: 'msa_create',
-          ...msaDoc,
+      logger.info(
+        `Sending MSA with id ${msaDoc._id} to ${_supplier.messagingKey} for signing.`,
+        { service: "API" }
+      );
+      msgDeliveryQueue.add(
+        {
+          documentId: msaDoc._id,
+          senderId: context.identity,
+          recipientId: _supplier.messagingKey,
+          payload: {
+            type: "msa_create",
+            ...msaDoc,
+          },
         },
         {
           // Mark job as failed after 20sec so subsequent jobs are not stalled
           timeout: 20000,
-        },
+        }
       );
 
       const { constants, ...msaData } = msaObject;

@@ -1,22 +1,36 @@
-import healthcheck from '../../install/healthcheck';
-import { pubsub } from '../subscriptions';
-import { setRPCProvider, setContractAddress, getServerSettings } from '../utils/serverSettings';
-import { createWalletFromMnemonic } from '../utils/wallet';
-import { logger } from 'radish34-logger';
+import { logger } from "radish34-logger";
 
-const SERVER_SETTINGS_UPDATE = 'SERVER_SETTINGS_UPDATE';
+import healthcheck from "../../install/healthcheck";
+import {
+  getServerSettings,
+  setContractAddress,
+  setRPCProvider,
+} from "../../utils/serverSettings";
+import { createWalletFromMnemonic } from "../../utils/wallet";
+import { pubsub } from "../subscriptions";
+
+const SERVER_SETTINGS_UPDATE = "SERVER_SETTINGS_UPDATE";
 
 export default {
   Query: {
     async getServerSettings() {
-      const { rpcProvider, organization, addresses } = await getServerSettings();
-      logger.info(`
+      const {
+        rpcProvider,
+        organization,
+        addresses,
+      } = await getServerSettings();
+      logger.info(
+        `
         Getting server settings:
         rpcProvider: ${rpcProvider}
         organization: ${organization}
         addresses: ${addresses}
-      `, { service: 'API' });
-      // TODO: Edit ServerSettings graphQL schema to be a nested object with 'organizations' and 'addresses' sub-objects, to align with the radosh-api backend.
+      `,
+        { service: "API" }
+      );
+      // TODO: Edit ServerSettings graphQL schema to be a nested object with
+      // 'organizations' and 'addresses' sub-objects, to align with the
+      // radosh-api backend.
       const flattenedSettings = {
         rpcProvider,
         organizationName: organization.name,
@@ -37,7 +51,7 @@ export default {
       return settings;
     },
     setOrgRegistryAddress: async (_parent, args) => {
-      await setContractAddress('OrgRegistry', args.orgRegistryAddress);
+      await setContractAddress("OrgRegistry", args.orgRegistryAddress);
       healthcheck();
       const settings = await getServerSettings();
       return settings;

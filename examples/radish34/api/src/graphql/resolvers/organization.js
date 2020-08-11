@@ -1,34 +1,34 @@
-import { pubsub } from '../subscriptions';
+import { logger } from "radish34-logger";
+
+import db from "../../db";
 import {
-  registerToOrgRegistry,
-  listOrganizations,
-  getRegisteredOrganization,
-  getOrganizationCount,
   getInterfaceAddress,
-} from '../services/organization';
-import { getServerSettings } from '../utils/serverSettings';
-import db from '../db';
-import { logger } from 'radish34-logger';
+  getOrganizationCount,
+  getRegisteredOrganization,
+  listOrganizations,
+  registerToOrgRegistry,
+} from "../../services/organization";
+import { getServerSettings } from "../../utils/serverSettings";
+import { pubsub } from "../subscriptions";
 
-const NEW_ORG = 'NEW_ORG';
+const NEW_ORG = "NEW_ORG";
 
-const getOrganizationById = async address => {
-  const organization = await db.collection('organization').findOne({ _id: address });
+const getOrganizationById = async (address) => {
+  const organization = await db
+    .collection("organization")
+    .findOne({ _id: address });
   return organization;
 };
 
 const getAllOrganizations = async () => {
-  const organizations = await db
-    .collection('organization')
-    .find({})
-    .toArray();
+  const organizations = await db.collection("organization").find({}).toArray();
   return organizations;
 };
 
 export default {
   Query: {
     organization(_parent, args) {
-      return getOrganizationById(args.address).then(res => res);
+      return getOrganizationById(args.address).then((res) => res);
     },
     organizations() {
       return getAllOrganizations();
@@ -43,18 +43,27 @@ export default {
       return getOrganizationCount();
     },
     orgRegistryAddress(_parent, args) {
-      return getInterfaceAddress(args.registrarAddress, args.managerAddress, 'IOrgRegistry');
+      return getInterfaceAddress(
+        args.registrarAddress,
+        args.managerAddress,
+        "IOrgRegistry"
+      );
     },
   },
   Organization: {
-    name: root => root.name,
-    address: root => root.address,
-    role: root => root.role,
+    name: (root) => root.name,
+    address: (root) => root.address,
+    role: (root) => root.role,
   },
   Mutation: {
     registerOrganization: async (_root, args) => {
       const settings = await getServerSettings();
-      const { zkpPublicKey, messagingKey, messagingEndpoint, address } = settings.organization;
+      const {
+        zkpPublicKey,
+        messagingKey,
+        messagingEndpoint,
+        address,
+      } = settings.organization;
 
       const orgRegistryTxHash = await registerToOrgRegistry(
         address,
@@ -62,10 +71,13 @@ export default {
         messagingEndpoint,
         messagingKey,
         zkpPublicKey,
-        args.metadata,
+        args.metadata
       );
 
-      logger.info(`Registering organization with tx hash: ${orgRegistryTxHash}`, { service: 'API' });
+      logger.info(
+        `Registering organization with tx hash: ${orgRegistryTxHash}`,
+        { service: "API" }
+      );
     },
   },
   Subscription: {

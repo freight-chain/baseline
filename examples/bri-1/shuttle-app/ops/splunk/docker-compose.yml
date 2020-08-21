@@ -1,7 +1,6 @@
-version: '3.5'
+version: "3.5"
 
-x-logging:
-  &splunk-logging
+x-logging: &splunk-logging
   driver: splunk
   options:
     splunk-token: 11111111-1111-1111-1111-1111111111113
@@ -14,7 +13,6 @@ x-logging:
     tag: "{{.Name}}-{{.ID}}"
 
 services:
-
   # alice
 
   alice-postgres:
@@ -59,7 +57,17 @@ services:
   alice-nats:
     image: provide/nats-server
     container_name: alice-provide-nats
-    command: ["-auth", "testtoken", "-p", "4222", "--remote_syslog", "udp://splunk:8514", "-D", "-V"]
+    command:
+      [
+        "-auth",
+        "testtoken",
+        "-p",
+        "4222",
+        "--remote_syslog",
+        "udp://splunk:8514",
+        "-D",
+        "-V",
+      ]
     environment:
       JWT_SIGNER_PUBLIC_KEY: |-
         -----BEGIN PUBLIC KEY-----
@@ -371,7 +379,17 @@ services:
   bob-nats:
     image: provide/nats-server
     container_name: bob-provide-nats
-    command: ["-auth", "testtoken", "-p", "4222", "--remote_syslog", "udp://splunk:8514", "-D", "-V"]
+    command:
+      [
+        "-auth",
+        "testtoken",
+        "-p",
+        "4222",
+        "--remote_syslog",
+        "udp://splunk:8514",
+        "-D",
+        "-V",
+      ]
     environment:
       JWT_SIGNER_PUBLIC_KEY: |-
         -----BEGIN PUBLIC KEY-----
@@ -656,7 +674,7 @@ services:
       - "8000"
       - "8088"
     healthcheck:
-      test: ['CMD', 'curl', '-f', 'http://localhost:8000']
+      test: ["CMD", "curl", "-f", "http://localhost:8000"]
       interval: 5s
       timeout: 5s
       retries: 2
@@ -758,12 +776,12 @@ networks:
     driver: bridge
     ipam:
       config:
-      - subnet: 172.40.0.0/24
+        - subnet: 172.40.0.0/24
   bob:
     driver: bridge
     ipam:
       config:
-      - subnet: 172.50.0.0/24
+        - subnet: 172.50.0.0/24
 
 volumes:
   alice-db:

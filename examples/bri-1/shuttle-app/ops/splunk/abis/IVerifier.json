@@ -42,9 +42,7 @@
   "ast": {
     "absolutePath": "/Users/kt/code/provide.network/baseline/core/contracts/contracts/IVerifier.sol",
     "exportedSymbols": {
-      "IVerifier": [
-        2150
-      ]
+      "IVerifier": [2150]
     },
     "id": 2151,
     "license": null,
@@ -52,12 +50,7 @@
     "nodes": [
       {
         "id": 2134,
-        "literals": [
-          "solidity",
-          "^",
-          "0.6",
-          ".9"
-        ],
+        "literals": ["solidity", "^", "0.6", ".9"],
         "nodeType": "PragmaDirective",
         "src": "0:23:6"
       },
@@ -74,9 +67,7 @@
         },
         "fullyImplemented": false,
         "id": 2150,
-        "linearizedBaseContracts": [
-          2150
-        ],
+        "linearizedBaseContracts": [2150],
         "name": "IVerifier",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -263,9 +254,7 @@
   "legacyAST": {
     "absolutePath": "/Users/kt/code/provide.network/baseline/core/contracts/contracts/IVerifier.sol",
     "exportedSymbols": {
-      "IVerifier": [
-        2150
-      ]
+      "IVerifier": [2150]
     },
     "id": 2151,
     "license": null,
@@ -273,12 +262,7 @@
     "nodes": [
       {
         "id": 2134,
-        "literals": [
-          "solidity",
-          "^",
-          "0.6",
-          ".9"
-        ],
+        "literals": ["solidity", "^", "0.6", ".9"],
         "nodeType": "PragmaDirective",
         "src": "0:23:6"
       },
@@ -295,9 +279,7 @@
         },
         "fullyImplemented": false,
         "id": 2150,
-        "linearizedBaseContracts": [
-          2150
-        ],
+        "linearizedBaseContracts": [2150],
         "name": "IVerifier",
         "nodeType": "ContractDefinition",
         "nodes": [

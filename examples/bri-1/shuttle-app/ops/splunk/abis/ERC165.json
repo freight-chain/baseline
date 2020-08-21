@@ -32,9 +32,7 @@
   "ast": {
     "absolutePath": "@openzeppelin/contracts/introspection/ERC165.sol",
     "exportedSymbols": {
-      "ERC165": [
-        4164
-      ]
+      "ERC165": [4164]
     },
     "id": 4165,
     "license": "MIT",
@@ -42,12 +40,7 @@
     "nodes": [
       {
         "id": 4109,
-        "literals": [
-          "solidity",
-          "^",
-          "0.6",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.6", ".0"],
         "nodeType": "PragmaDirective",
         "src": "33:23:14"
       },
@@ -84,9 +77,7 @@
             "src": "274:7:14"
           }
         ],
-        "contractDependencies": [
-          4176
-        ],
+        "contractDependencies": [4176],
         "contractKind": "contract",
         "documentation": {
           "id": 4111,
@@ -96,10 +87,7 @@
         },
         "fullyImplemented": true,
         "id": 4164,
-        "linearizedBaseContracts": [
-          4164,
-          4176
-        ],
+        "linearizedBaseContracts": [4164, 4176],
         "name": "ERC165",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -291,9 +279,7 @@
             "visibility": "internal"
           },
           {
-            "baseFunctions": [
-              4175
-            ],
+            "baseFunctions": [4175],
             "body": {
               "id": 4142,
               "nodeType": "Block",
@@ -535,10 +521,7 @@
                       "id": 4149,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        -18,
-                        -18
-                      ],
+                      "overloadedDeclarations": [-18, -18],
                       "referencedDeclaration": -18,
                       "src": "1557:7:14",
                       "typeDescriptions": {
@@ -715,9 +698,7 @@
   "legacyAST": {
     "absolutePath": "@openzeppelin/contracts/introspection/ERC165.sol",
     "exportedSymbols": {
-      "ERC165": [
-        4164
-      ]
+      "ERC165": [4164]
     },
     "id": 4165,
     "license": "MIT",
@@ -725,12 +706,7 @@
     "nodes": [
       {
         "id": 4109,
-        "literals": [
-          "solidity",
-          "^",
-          "0.6",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.6", ".0"],
         "nodeType": "PragmaDirective",
         "src": "33:23:14"
       },
@@ -767,9 +743,7 @@
             "src": "274:7:14"
           }
         ],
-        "contractDependencies": [
-          4176
-        ],
+        "contractDependencies": [4176],
         "contractKind": "contract",
         "documentation": {
           "id": 4111,
@@ -779,10 +753,7 @@
         },
         "fullyImplemented": true,
         "id": 4164,
-        "linearizedBaseContracts": [
-          4164,
-          4176
-        ],
+        "linearizedBaseContracts": [4164, 4176],
         "name": "ERC165",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -974,9 +945,7 @@
             "visibility": "internal"
           },
           {
-            "baseFunctions": [
-              4175
-            ],
+            "baseFunctions": [4175],
             "body": {
               "id": 4142,
               "nodeType": "Block",
@@ -1218,10 +1187,7 @@
                       "id": 4149,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        -18,
-                        -18
-                      ],
+                      "overloadedDeclarations": [-18, -18],
                       "referencedDeclaration": -18,
                       "src": "1557:7:14",
                       "typeDescriptions": {

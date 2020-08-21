@@ -50,9 +50,7 @@
   "ast": {
     "absolutePath": "/Users/kt/code/provide.network/baseline/core/contracts/contracts/ERC165Compatible.sol",
     "exportedSymbols": {
-      "ERC165Compatible": [
-        1574
-      ]
+      "ERC165Compatible": [1574]
     },
     "id": 1575,
     "license": null,
@@ -60,12 +58,7 @@
     "nodes": [
       {
         "id": 1549,
-        "literals": [
-          "solidity",
-          "^",
-          "0.6",
-          ".9"
-        ],
+        "literals": ["solidity", "^", "0.6", ".9"],
         "nodeType": "PragmaDirective",
         "src": "0:23:1"
       },
@@ -102,19 +95,12 @@
             "src": "113:6:1"
           }
         ],
-        "contractDependencies": [
-          4164,
-          4176
-        ],
+        "contractDependencies": [4164, 4176],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
         "id": 1574,
-        "linearizedBaseContracts": [
-          1574,
-          4164,
-          4176
-        ],
+        "linearizedBaseContracts": [1574, 4164, 4176],
         "name": "ERC165Compatible",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -373,9 +359,7 @@
   "legacyAST": {
     "absolutePath": "/Users/kt/code/provide.network/baseline/core/contracts/contracts/ERC165Compatible.sol",
     "exportedSymbols": {
-      "ERC165Compatible": [
-        1574
-      ]
+      "ERC165Compatible": [1574]
     },
     "id": 1575,
     "license": null,
@@ -383,12 +367,7 @@
     "nodes": [
       {
         "id": 1549,
-        "literals": [
-          "solidity",
-          "^",
-          "0.6",
-          ".9"
-        ],
+        "literals": ["solidity", "^", "0.6", ".9"],
         "nodeType": "PragmaDirective",
         "src": "0:23:1"
       },
@@ -425,19 +404,12 @@
             "src": "113:6:1"
           }
         ],
-        "contractDependencies": [
-          4164,
-          4176
-        ],
+        "contractDependencies": [4164, 4176],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
         "id": 1574,
-        "linearizedBaseContracts": [
-          1574,
-          4164,
-          4176
-        ],
+        "linearizedBaseContracts": [1574, 4164, 4176],
         "name": "ERC165Compatible",
         "nodeType": "ContractDefinition",
         "nodes": [

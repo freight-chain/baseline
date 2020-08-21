@@ -149,9 +149,7 @@
   "ast": {
     "absolutePath": "/Users/kt/code/provide.network/baseline/core/contracts/contracts/BN256G2.sol",
     "exportedSymbols": {
-      "BN256G2": [
-        1547
-      ]
+      "BN256G2": [1547]
     },
     "id": 1548,
     "license": null,
@@ -159,12 +157,7 @@
     "nodes": [
       {
         "id": 1,
-        "literals": [
-          "solidity",
-          "^",
-          "0.6",
-          ".9"
-        ],
+        "literals": ["solidity", "^", "0.6", ".9"],
         "nodeType": "PragmaDirective",
         "src": "32:23:0"
       },
@@ -181,9 +174,7 @@
         },
         "fullyImplemented": true,
         "id": 1547,
-        "linearizedBaseContracts": [
-          1547
-        ],
+        "linearizedBaseContracts": [1547],
         "name": "BN256G2",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -2163,9 +2154,7 @@
                   "src": "2378:80:0"
                 },
                 {
-                  "assignments": [
-                    163
-                  ],
+                  "assignments": [163],
                   "declarations": [
                     {
                       "constant": false,
@@ -3166,9 +3155,7 @@
               "src": "3331:632:0",
               "statements": [
                 {
-                  "assignments": [
-                    224
-                  ],
+                  "assignments": [224],
                   "declarations": [
                     {
                       "constant": false,
@@ -3794,9 +3781,7 @@
                   }
                 },
                 {
-                  "assignments": [
-                    271
-                  ],
+                  "assignments": [271],
                   "declarations": [
                     {
                       "constant": false,
@@ -7248,9 +7233,7 @@
               "src": "5683:263:0",
               "statements": [
                 {
-                  "assignments": [
-                    503
-                  ],
+                  "assignments": [503],
                   "declarations": [
                     {
                       "constant": false,
@@ -7937,9 +7920,7 @@
               "src": "6070:386:0",
               "statements": [
                 {
-                  "assignments": [
-                    550
-                  ],
+                  "assignments": [550],
                   "declarations": [
                     {
                       "constant": false,
@@ -7976,9 +7957,7 @@
                   "src": "6080:11:0"
                 },
                 {
-                  "assignments": [
-                    553
-                  ],
+                  "assignments": [553],
                   "declarations": [
                     {
                       "constant": false,
@@ -8015,9 +7994,7 @@
                   "src": "6101:11:0"
                 },
                 {
-                  "assignments": [
-                    556
-                  ],
+                  "assignments": [556],
                   "declarations": [
                     {
                       "constant": false,
@@ -8054,9 +8031,7 @@
                   "src": "6122:12:0"
                 },
                 {
-                  "assignments": [
-                    559
-                  ],
+                  "assignments": [559],
                   "declarations": [
                     {
                       "constant": false,
@@ -9265,9 +9240,7 @@
                   "src": "6543:5:0"
                 },
                 {
-                  "assignments": [
-                    639
-                  ],
+                  "assignments": [639],
                   "declarations": [
                     {
                       "constant": false,
@@ -9321,9 +9294,7 @@
                   "src": "6558:16:0"
                 },
                 {
-                  "assignments": [
-                    643
-                  ],
+                  "assignments": [643],
                   "declarations": [
                     {
                       "constant": false,
@@ -9372,9 +9343,7 @@
                   "src": "6584:13:0"
                 },
                 {
-                  "assignments": [
-                    647
-                  ],
+                  "assignments": [647],
                   "declarations": [
                     {
                       "constant": false,
@@ -9423,9 +9392,7 @@
                   "src": "6607:16:0"
                 },
                 {
-                  "assignments": [
-                    651
-                  ],
+                  "assignments": [651],
                   "declarations": [
                     {
                       "constant": false,
@@ -10140,9 +10107,7 @@
               "src": "7078:225:0",
               "statements": [
                 {
-                  "assignments": [
-                    717
-                  ],
+                  "assignments": [717],
                   "declarations": [
                     {
                       "constant": false,
@@ -10179,9 +10144,7 @@
                   "src": "7088:13:0"
                 },
                 {
-                  "assignments": [
-                    720
-                  ],
+                  "assignments": [720],
                   "declarations": [
                     {
                       "constant": false,
@@ -22400,9 +22363,7 @@
   "legacyAST": {
     "absolutePath": "/Users/kt/code/provide.network/baseline/core/contracts/contracts/BN256G2.sol",
     "exportedSymbols": {
-      "BN256G2": [
-        1547
-      ]
+      "BN256G2": [1547]
     },
     "id": 1548,
     "license": null,
@@ -22410,12 +22371,7 @@
     "nodes": [
       {
         "id": 1,
-        "literals": [
-          "solidity",
-          "^",
-          "0.6",
-          ".9"
-        ],
+        "literals": ["solidity", "^", "0.6", ".9"],
         "nodeType": "PragmaDirective",
         "src": "32:23:0"
       },
@@ -22432,9 +22388,7 @@
         },
         "fullyImplemented": true,
         "id": 1547,
-        "linearizedBaseContracts": [
-          1547
-        ],
+        "linearizedBaseContracts": [1547],
         "name": "BN256G2",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -24414,9 +24368,7 @@
                   "src": "2378:80:0"
                 },
                 {
-                  "assignments": [
-                    163
-                  ],
+                  "assignments": [163],
                   "declarations": [
                     {
                       "constant": false,
@@ -25417,9 +25369,7 @@
               "src": "3331:632:0",
               "statements": [
                 {
-                  "assignments": [
-                    224
-                  ],
+                  "assignments": [224],
                   "declarations": [
                     {
                       "constant": false,
@@ -26045,9 +25995,7 @@
                   }
                 },
                 {
-                  "assignments": [
-                    271
-                  ],
+                  "assignments": [271],
                   "declarations": [
                     {
                       "constant": false,
@@ -29499,9 +29447,7 @@
               "src": "5683:263:0",
               "statements": [
                 {
-                  "assignments": [
-                    503
-                  ],
+                  "assignments": [503],
                   "declarations": [
                     {
                       "constant": false,
@@ -30188,9 +30134,7 @@
               "src": "6070:386:0",
               "statements": [
                 {
-                  "assignments": [
-                    550
-                  ],
+                  "assignments": [550],
                   "declarations": [
                     {
                       "constant": false,
@@ -30227,9 +30171,7 @@
                   "src": "6080:11:0"
                 },
                 {
-                  "assignments": [
-                    553
-                  ],
+                  "assignments": [553],
                   "declarations": [
                     {
                       "constant": false,
@@ -30266,9 +30208,7 @@
                   "src": "6101:11:0"
                 },
                 {
-                  "assignments": [
-                    556
-                  ],
+                  "assignments": [556],
                   "declarations": [
                     {
                       "constant": false,
@@ -30305,9 +30245,7 @@
                   "src": "6122:12:0"
                 },
                 {
-                  "assignments": [
-                    559
-                  ],
+                  "assignments": [559],
                   "declarations": [
                     {
                       "constant": false,
@@ -31516,9 +31454,7 @@
                   "src": "6543:5:0"
                 },
                 {
-                  "assignments": [
-                    639
-                  ],
+                  "assignments": [639],
                   "declarations": [
                     {
                       "constant": false,
@@ -31572,9 +31508,7 @@
                   "src": "6558:16:0"
                 },
                 {
-                  "assignments": [
-                    643
-                  ],
+                  "assignments": [643],
                   "declarations": [
                     {
                       "constant": false,
@@ -31623,9 +31557,7 @@
                   "src": "6584:13:0"
                 },
                 {
-                  "assignments": [
-                    647
-                  ],
+                  "assignments": [647],
                   "declarations": [
                     {
                       "constant": false,
@@ -31674,9 +31606,7 @@
                   "src": "6607:16:0"
                 },
                 {
-                  "assignments": [
-                    651
-                  ],
+                  "assignments": [651],
                   "declarations": [
                     {
                       "constant": false,
@@ -32391,9 +32321,7 @@
               "src": "7078:225:0",
               "statements": [
                 {
-                  "assignments": [
-                    717
-                  ],
+                  "assignments": [717],
                   "declarations": [
                     {
                       "constant": false,
@@ -32430,9 +32358,7 @@
                   "src": "7088:13:0"
                 },
                 {
-                  "assignments": [
-                    720
-                  ],
+                  "assignments": [720],
                   "declarations": [
                     {
                       "constant": false,

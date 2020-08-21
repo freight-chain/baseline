@@ -114,9 +114,7 @@
   "ast": {
     "absolutePath": "/Users/kt/code/provide.network/baseline/core/contracts/contracts/IOrgRegistry.sol",
     "exportedSymbols": {
-      "IOrgRegistry": [
-        2099
-      ]
+      "IOrgRegistry": [2099]
     },
     "id": 2100,
     "license": null,
@@ -124,21 +122,13 @@
     "nodes": [
       {
         "id": 2058,
-        "literals": [
-          "solidity",
-          "^",
-          "0.6",
-          ".9"
-        ],
+        "literals": ["solidity", "^", "0.6", ".9"],
         "nodeType": "PragmaDirective",
         "src": "0:23:4"
       },
       {
         "id": 2059,
-        "literals": [
-          "experimental",
-          "ABIEncoderV2"
-        ],
+        "literals": ["experimental", "ABIEncoderV2"],
         "nodeType": "PragmaDirective",
         "src": "24:33:4"
       },
@@ -150,9 +140,7 @@
         "documentation": null,
         "fullyImplemented": false,
         "id": 2099,
-        "linearizedBaseContracts": [
-          2099
-        ],
+        "linearizedBaseContracts": [2099],
         "name": "IOrgRegistry",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -681,9 +669,7 @@
   "legacyAST": {
     "absolutePath": "/Users/kt/code/provide.network/baseline/core/contracts/contracts/IOrgRegistry.sol",
     "exportedSymbols": {
-      "IOrgRegistry": [
-        2099
-      ]
+      "IOrgRegistry": [2099]
     },
     "id": 2100,
     "license": null,
@@ -691,21 +677,13 @@
     "nodes": [
       {
         "id": 2058,
-        "literals": [
-          "solidity",
-          "^",
-          "0.6",
-          ".9"
-        ],
+        "literals": ["solidity", "^", "0.6", ".9"],
         "nodeType": "PragmaDirective",
         "src": "0:23:4"
       },
       {
         "id": 2059,
-        "literals": [
-          "experimental",
-          "ABIEncoderV2"
-        ],
+        "literals": ["experimental", "ABIEncoderV2"],
         "nodeType": "PragmaDirective",
         "src": "24:33:4"
       },
@@ -717,9 +695,7 @@
         "documentation": null,
         "fullyImplemented": false,
         "id": 2099,
-        "linearizedBaseContracts": [
-          2099
-        ],
+        "linearizedBaseContracts": [2099],
         "name": "IOrgRegistry",
         "nodeType": "ContractDefinition",
         "nodes": [

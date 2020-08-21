@@ -87,9 +87,7 @@
   "ast": {
     "absolutePath": "/Users/kt/code/provide.network/baseline/core/contracts/contracts/IShield.sol",
     "exportedSymbols": {
-      "IShield": [
-        2132
-      ]
+      "IShield": [2132]
     },
     "id": 2133,
     "license": null,
@@ -97,12 +95,7 @@
     "nodes": [
       {
         "id": 2101,
-        "literals": [
-          "solidity",
-          "^",
-          "0.6",
-          ".9"
-        ],
+        "literals": ["solidity", "^", "0.6", ".9"],
         "nodeType": "PragmaDirective",
         "src": "0:23:5"
       },
@@ -114,9 +107,7 @@
         "documentation": null,
         "fullyImplemented": false,
         "id": 2132,
-        "linearizedBaseContracts": [
-          2132
-        ],
+        "linearizedBaseContracts": [2132],
         "name": "IShield",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -498,9 +489,7 @@
   "legacyAST": {
     "absolutePath": "/Users/kt/code/provide.network/baseline/core/contracts/contracts/IShield.sol",
     "exportedSymbols": {
-      "IShield": [
-        2132
-      ]
+      "IShield": [2132]
     },
     "id": 2133,
     "license": null,
@@ -508,12 +497,7 @@
     "nodes": [
       {
         "id": 2101,
-        "literals": [
-          "solidity",
-          "^",
-          "0.6",
-          ".9"
-        ],
+        "literals": ["solidity", "^", "0.6", ".9"],
         "nodeType": "PragmaDirective",
         "src": "0:23:5"
       },
@@ -525,9 +509,7 @@
         "documentation": null,
         "fullyImplemented": false,
         "id": 2132,
-        "linearizedBaseContracts": [
-          2132
-        ],
+        "linearizedBaseContracts": [2132],
         "name": "IShield",
         "nodeType": "ContractDefinition",
         "nodes": [

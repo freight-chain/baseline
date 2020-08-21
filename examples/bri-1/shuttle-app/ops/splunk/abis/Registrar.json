@@ -61,9 +61,7 @@
   "ast": {
     "absolutePath": "/Users/kt/code/provide.network/baseline/core/contracts/contracts/Registrar.sol",
     "exportedSymbols": {
-      "Registrar": [
-        3956
-      ]
+      "Registrar": [3956]
     },
     "id": 3957,
     "license": null,
@@ -71,12 +69,7 @@
     "nodes": [
       {
         "id": 3829,
-        "literals": [
-          "solidity",
-          "^",
-          "0.6",
-          ".9"
-        ],
+        "literals": ["solidity", "^", "0.6", ".9"],
         "nodeType": "PragmaDirective",
         "src": "0:23:10"
       },
@@ -104,9 +97,7 @@
         },
         "fullyImplemented": true,
         "id": 3956,
-        "linearizedBaseContracts": [
-          3956
-        ],
+        "linearizedBaseContracts": [3956],
         "name": "Registrar",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -397,10 +388,7 @@
                       "id": 3844,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        -18,
-                        -18
-                      ],
+                      "overloadedDeclarations": [-18, -18],
                       "referencedDeclaration": -18,
                       "src": "423:7:10",
                       "typeDescriptions": {
@@ -613,9 +601,7 @@
               "src": "1631:181:10",
               "statements": [
                 {
-                  "assignments": [
-                    3877
-                  ],
+                  "assignments": [3877],
                   "declarations": [
                     {
                       "constant": false,
@@ -1004,9 +990,7 @@
               "src": "2144:162:10",
               "statements": [
                 {
-                  "assignments": [
-                    3908
-                  ],
+                  "assignments": [3908],
                   "declarations": [
                     {
                       "constant": false,
@@ -1760,9 +1744,7 @@
   "legacyAST": {
     "absolutePath": "/Users/kt/code/provide.network/baseline/core/contracts/contracts/Registrar.sol",
     "exportedSymbols": {
-      "Registrar": [
-        3956
-      ]
+      "Registrar": [3956]
     },
     "id": 3957,
     "license": null,
@@ -1770,12 +1752,7 @@
     "nodes": [
       {
         "id": 3829,
-        "literals": [
-          "solidity",
-          "^",
-          "0.6",
-          ".9"
-        ],
+        "literals": ["solidity", "^", "0.6", ".9"],
         "nodeType": "PragmaDirective",
         "src": "0:23:10"
       },
@@ -1803,9 +1780,7 @@
         },
         "fullyImplemented": true,
         "id": 3956,
-        "linearizedBaseContracts": [
-          3956
-        ],
+        "linearizedBaseContracts": [3956],
         "name": "Registrar",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -2096,10 +2071,7 @@
                       "id": 3844,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        -18,
-                        -18
-                      ],
+                      "overloadedDeclarations": [-18, -18],
                       "referencedDeclaration": -18,
                       "src": "423:7:10",
                       "typeDescriptions": {
@@ -2312,9 +2284,7 @@
               "src": "1631:181:10",
               "statements": [
                 {
-                  "assignments": [
-                    3877
-                  ],
+                  "assignments": [3877],
                   "declarations": [
                     {
                       "constant": false,
@@ -2703,9 +2673,7 @@
               "src": "2144:162:10",
               "statements": [
                 {
-                  "assignments": [
-                    3908
-                  ],
+                  "assignments": [3908],
                   "declarations": [
                     {
                       "constant": false,

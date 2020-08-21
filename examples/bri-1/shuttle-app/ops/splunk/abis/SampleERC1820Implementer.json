@@ -37,9 +37,7 @@
   "ast": {
     "absolutePath": "/Users/kt/code/provide.network/baseline/core/contracts/contracts/SampleERC1820Implementer.sol",
     "exportedSymbols": {
-      "SampleERC1820Implementer": [
-        3975
-      ]
+      "SampleERC1820Implementer": [3975]
     },
     "id": 3976,
     "license": null,
@@ -47,12 +45,7 @@
     "nodes": [
       {
         "id": 3958,
-        "literals": [
-          "solidity",
-          "^",
-          "0.6",
-          ".9"
-        ],
+        "literals": ["solidity", "^", "0.6", ".9"],
         "nodeType": "PragmaDirective",
         "src": "0:23:11"
       },
@@ -89,24 +82,17 @@
             "src": "107:27:11"
           }
         ],
-        "contractDependencies": [
-          1595
-        ],
+        "contractDependencies": [1595],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
         "id": 3975,
-        "linearizedBaseContracts": [
-          3975,
-          1595
-        ],
+        "linearizedBaseContracts": [3975, 1595],
         "name": "SampleERC1820Implementer",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "baseFunctions": [
-              1594
-            ],
+            "baseFunctions": [1594],
             "body": {
               "id": 3973,
               "nodeType": "Block",
@@ -262,9 +248,7 @@
   "legacyAST": {
     "absolutePath": "/Users/kt/code/provide.network/baseline/core/contracts/contracts/SampleERC1820Implementer.sol",
     "exportedSymbols": {
-      "SampleERC1820Implementer": [
-        3975
-      ]
+      "SampleERC1820Implementer": [3975]
     },
     "id": 3976,
     "license": null,
@@ -272,12 +256,7 @@
     "nodes": [
       {
         "id": 3958,
-        "literals": [
-          "solidity",
-          "^",
-          "0.6",
-          ".9"
-        ],
+        "literals": ["solidity", "^", "0.6", ".9"],
         "nodeType": "PragmaDirective",
         "src": "0:23:11"
       },
@@ -314,24 +293,17 @@
             "src": "107:27:11"
           }
         ],
-        "contractDependencies": [
-          1595
-        ],
+        "contractDependencies": [1595],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
         "id": 3975,
-        "linearizedBaseContracts": [
-          3975,
-          1595
-        ],
+        "linearizedBaseContracts": [3975, 1595],
         "name": "SampleERC1820Implementer",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "baseFunctions": [
-              1594
-            ],
+            "baseFunctions": [1594],
             "body": {
               "id": 3973,
               "nodeType": "Block",

@@ -190,11 +190,11 @@ describe('baseline', () => {
               // FIXME
               // assert(aliceApp.getProtocolMessagesRx() === 1, 'protocol messages rx should equal 1');
             });
-    
+
             describe('verification, pushing the proof to a new leaf in the merkle tree', () => { // PING!
-    
+
               describe('subsequent state transition', () => { // PONG!
-    
+
               });
             });
           });

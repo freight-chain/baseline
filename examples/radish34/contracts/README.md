@@ -185,7 +185,7 @@ npm run test
 
 ** These tests take about 25 seconds to run **
 
-<details> 
+<details>
   <summary>Example logs</summary>
   <p>
 

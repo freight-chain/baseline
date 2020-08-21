@@ -3,7 +3,7 @@ import { zkSnarkCircuitProviderServiceFactory, zkSnarkCircuitProviderServiceZokr
 
 // const baselineDocumentCircuitPath = '../../lib/circuits/baselineDocument.zok';
 const noopAgreementCircuitPath = '../../lib/circuits/noopAgreement.zok';
-          
+
 let provider;
 
 describe('when the underlying zokrates provider is available', () => {

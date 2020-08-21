@@ -180,7 +180,7 @@ export const shouldBehaveLikeAnInitialWorkgroupOrganization = (app) => {
               assert(trackedShieldContracts.length === 1, 'workgroup shield contract should have been tracked');
               assert(trackedShieldContracts.indexOf(shield.address) === 0, 'workgroup shield contract should have been tracked');
             });
-  
+
             it('should deposit the circuit verifier on-chain', async () => {
               assert(verifier, 'workflow circuit verifier contract should not be null');
               assert(verifier.address, 'workflow circuit verifier contract should have been deployed');

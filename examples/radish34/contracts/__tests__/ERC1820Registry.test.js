@@ -1,7 +1,7 @@
-import {ethers, utils} from 'ethers';
+import { ethers, utils } from "ethers";
 
-import ERC1820RegistryArtifact from '../artifacts/ERC1820Registry.json';
-import {getAccounts, getSigner, getWallet} from '../src/utils';
+import ERC1820RegistryArtifact from "../artifacts/ERC1820Registry.json";
+import { getAccounts, getSigner, getWallet } from "../src/utils";
 
 const wallet = getWallet();
 const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
@@ -10,17 +10,21 @@ let accounts, signer, sampleImplementer, erc1820Registry, iHash;
 let ERC1820Registry;
 let SampleERC1820Implementer;
 
-describe('ERC1820 Registry tests', () => {
+describe("ERC1820 Registry tests", () => {
   beforeAll(async () => {
     accounts = await getAccounts();
     signer = await getSigner(accounts[0]);
     ERC1820Registry = new ethers.ContractFactory(
-        ERC1820RegistryArtifact.abi, ERC1820RegistryArtifact.bytecode, signer);
+      ERC1820RegistryArtifact.abi,
+      ERC1820RegistryArtifact.bytecode,
+      signer
+    );
     erc1820Registry = await ERC1820Registry.deploy();
     sampleImplementer = await SampleERC1820Implementer.deploy();
-    expect(erc1820Registry.address).toMatch(new RegExp('^0x[a-fA-F0-9]{40}$'));
-    expect(sampleImplementer.address)
-        .toMatch(new RegExp('^0x[a-fA-F0-9]{40}$'));
+    expect(erc1820Registry.address).toMatch(new RegExp("^0x[a-fA-F0-9]{40}$"));
+    expect(sampleImplementer.address).toMatch(
+      new RegExp("^0x[a-fA-F0-9]{40}$")
+    );
   });
 
   test("Should be able to set the interface hash", async () => {
@@ -30,25 +34,35 @@ describe('ERC1820 Registry tests', () => {
 
   test("Should be able to set an implementer address", async () => {
     const iImplementer = await erc1820Registry.setInterfaceImplementer(
-        accounts[0], iHash, sampleImplementer.address);
+      accounts[0],
+      iHash,
+      sampleImplementer.address
+    );
     expect(iImplementer).toBeDefined();
   });
 
   test("Should be able to get the implementer address", async () => {
-    const retImplementer =
-        await erc1820Registry.getInterfaceImplementer(accounts[0], iHash);
+    const retImplementer = await erc1820Registry.getInterfaceImplementer(
+      accounts[0],
+      iHash
+    );
     expect(retImplementer).toBe(sampleImplementer.address);
   });
 
   test("Should be able to remove interface", async () => {
     const iImplementer = await erc1820Registry.setInterfaceImplementer(
-        accounts[0], iHash, NULL_ADDRESS);
+      accounts[0],
+      iHash,
+      NULL_ADDRESS
+    );
     expect(iImplementer).toBeDefined();
   });
 
   test("Should be able to get the updated implementer address", async () => {
-    const retImplementer =
-        await erc1820Registry.getInterfaceImplementer(accounts[0], iHash);
+    const retImplementer = await erc1820Registry.getInterfaceImplementer(
+      accounts[0],
+      iHash
+    );
     expect(retImplementer).toBe(NULL_ADDRESS);
   });
 

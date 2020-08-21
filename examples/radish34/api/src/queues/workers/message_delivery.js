@@ -1,23 +1,29 @@
 import mongoose from 'mongoose';
+import {logger} from 'radish34-logger';
+
+import {originationUpdate} from '../../db/models/modules/rfps';
 import messenger from '../../utils/messengerWrapper';
-import { originationUpdate } from '../../db/models/modules/rfps';
-import { logger } from 'radish34-logger';
 
 module.exports = async (job, done) => {
-  const { data: doc } = job;
-  logger.info(`BullJS delivering message with uuid ${doc.documentId} to ${doc.recipientId}.`, { service: 'API' });
-  const message = (await messenger.createMessage(doc.senderId, doc.recipientId, doc.payload)).data;
+  const {data : doc} = job;
+  logger.info(`BullJS delivering message with uuid ${doc.documentId} to ${
+                  doc.recipientId}.`,
+              {service : 'API'});
+  const message = (await messenger.createMessage(doc.senderId, doc.recipientId,
+                                                 doc.payload))
+                      .data;
   job.progress(50);
 
-  logger.info(`BullJS updating the origination messageId to ${message._id}.`, { service: 'API' });
+  logger.info(`BullJS updating the origination messageId to ${message._id}.`,
+              {service : 'API'});
   // Cannot use pre-established mongoose connection because this code runs in
   // a separate sandbox process
   const dbFullName = `${process.env.MONGO_URL}/${process.env.MONGO_DB_NAME}`;
   const dbOptions = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
+    useNewUrlParser : true,
+    useUnifiedTopology : true,
+    useFindAndModify : false,
+    useCreateIndex : true,
   };
   await mongoose.connect(dbFullName, dbOptions);
 

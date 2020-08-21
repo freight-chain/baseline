@@ -33,10 +33,10 @@ wait_for()
     while :
     do
         if [[ $AWAIT_ISBUSY -eq 1 ]]; then
-            nc -z $AWAIT_HOST $AWAIT_PORT
+            nc -z "$AWAIT_HOST" "$AWAIT_PORT"
             AWAIT_result=$?
         else
-            (echo > /dev/tcp/$AWAIT_HOST/$AWAIT_PORT) >/dev/null 2>&1
+            (echo > /dev/tcp/"$AWAIT_HOST/$AWAIT_PORT") >/dev/null 2>&1
             AWAIT_result=$?
         fi
         if [[ $AWAIT_result -eq 0 ]]; then
@@ -46,25 +46,25 @@ wait_for()
         fi
         sleep 1
     done
-    return $AWAIT_result
+    return "$AWAIT_result"
 }
 
 wait_for_wrapper()
 {
     # In order to support SIGINT during timeout: http://unix.stackexchange.com/a/57692
     if [[ $AWAIT_QUIET -eq 1 ]]; then
-        timeout $AWAIT_BUSYTIMEFLAG $AWAIT_TIMEOUT bash $0 --quiet --child --host=$AWAIT_HOST --port=$AWAIT_PORT --timeout=$AWAIT_TIMEOUT &
+        timeout "$AWAIT_BUSYTIMEFLAG" "$AWAIT_TIMEOUT" bash "$0" --quiet --child --host="$AWAIT_HOST" --port="$AWAIT_PORT" --timeout="$AWAIT_TIMEOUT" &
     else
-        timeout $AWAIT_BUSYTIMEFLAG $AWAIT_TIMEOUT bash $0 --child --host=$AWAIT_HOST --port=$AWAIT_PORT --timeout=$AWAIT_TIMEOUT &
+        timeout "$AWAIT_BUSYTIMEFLAG" "$AWAIT_TIMEOUT" bash "$0" --child --host="$AWAIT_HOST" --port="$AWAIT_PORT" --timeout="$AWAIT_TIMEOUT" &
     fi
     AWAIT_PID=$!
     trap "kill -INT -$AWAIT_PID" INT
-    wait $AWAIT_PID
+    wait "$AWAIT_PID"
     AWAIT_RESULT=$?
     if [[ $AWAIT_RESULT -ne 0 ]]; then
         echoerr "$AWAIT_cmdname: timeout occurred after waiting $AWAIT_TIMEOUT seconds for $AWAIT_HOST:$AWAIT_PORT"
     fi
-    return $AWAIT_RESULT
+    return "$AWAIT_RESULT"
 }
 
 # process arguments
@@ -72,7 +72,7 @@ while [[ $# -gt 0 ]]
 do
     case "$1" in
         *:* )
-        AWAIT_hostport=(${1//:/ })
+        AWAIT_hostport=("${1//:/ }")
         AWAIT_HOST=${AWAIT_hostport[0]}
         AWAIT_PORT=${AWAIT_hostport[1]}
         shift 1
@@ -143,7 +143,7 @@ AWAIT_QUIET=${AWAIT_QUIET:-0}
 
 # check to see if timeout is from busybox?
 AWAIT_TIMEOUT_PATH=$(type -p timeout)
-AWAIT_TIMEOUT_PATH=$(realpath $AWAIT_TIMEOUT_PATH 2>/dev/null || readlink -f $AWAIT_TIMEOUT_PATH)
+AWAIT_TIMEOUT_PATH=$(realpath "$AWAIT_TIMEOUT_PATH" 2>/dev/null || readlink -f "$AWAIT_TIMEOUT_PATH")
 AWAIT_BUSYTIMEFLAG=""
 if [[ $AWAIT_TIMEOUT_PATH =~ "busybox" ]]; then
         AWAIT_ISBUSY=1
@@ -154,7 +154,7 @@ fi
 if [[ $AWAIT_CHILD -gt 0 ]]; then
     wait_for
     AWAIT_RESULT=$?
-    exit $AWAIT_RESULT
+    exit "$AWAIT_RESULT"
 else
     if [[ $AWAIT_TIMEOUT -gt 0 ]]; then
         wait_for_wrapper
@@ -168,9 +168,9 @@ fi
 if [[ $AWAIT_CLI != "" ]]; then
     if [[ $AWAIT_RESULT -ne 0 && $AWAIT_STRICT -eq 1 ]]; then
         echoerr "$AWAIT_cmdname: strict mode, refusing to execute subprocess"
-        exit $AWAIT_RESULT
+        exit "$AWAIT_RESULT"
     fi
     exec "${AWAIT_CLI[@]}"
 else
-    exit $AWAIT_RESULT
+    exit "$AWAIT_RESULT"
 fi
